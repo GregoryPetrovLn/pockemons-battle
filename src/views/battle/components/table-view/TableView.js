@@ -10,8 +10,8 @@ const TableView = ({attackHandler,lastMove}) => {
                 <div className={'result'}><span>{lastMove?.opponent}</span></div>
             </div>
             <div className={'info'}>
-                <div>You hit for {lastMove?.you}</div>
-                <div>You opponent hit for {lastMove?.opponent}</div>
+                <div>You hit for {lastMove?.opponent}</div>
+                <div>You opponent hit for {lastMove?.you}</div>
             </div>
             <div className={'attack-btn-container'}>
                 <button onClick={attackHandler}>Attack!</button>
