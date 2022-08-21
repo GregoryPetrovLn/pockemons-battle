@@ -1,0 +1,15 @@
+.show-winner{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  .wrapper {
+    text-align: center;
+    margin-top: 30px;
+    button{
+      display: block;
+      margin: 10px auto;
+      height: 25px;
+    }
+  }
+}

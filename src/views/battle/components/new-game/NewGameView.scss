@@ -1,0 +1,14 @@
+.new-game-view {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  .wrapper {
+    text-align: center;
+    margin-top: 30px;
+
+    button {
+      margin-top: 10px;
+    }
+  }
+}

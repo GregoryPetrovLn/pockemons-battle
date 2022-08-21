@@ -1,12 +1,13 @@
 import {GET_LIST_POCKEMONS} from "./actionTypes";
 
+
 const initialState = {
     isLoading: false,
-    data: null
+    data: null,
+    player:null
 }
 
 export const reducer = (state = initialState, {type, payload}) => {
-    console.log(type, payload)
     switch (type) {
         case GET_LIST_POCKEMONS.INIT:
             return {...state, isLoading: true, data: null}
