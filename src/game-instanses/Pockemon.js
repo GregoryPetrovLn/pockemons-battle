@@ -1,5 +1,5 @@
 export class Pockemon {
-    life = 100;
+    health = 100;
     history = [];
 
     constructor(img) {
@@ -7,7 +7,7 @@ export class Pockemon {
     }
 
     getDamage(damage) {
-        this.life -= damage
+        this.health -= damage
     }
 
     addBattleResultToHistory(result) {
