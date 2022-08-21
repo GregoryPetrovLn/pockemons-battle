@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getListPockemons} from "./redux/actions";
 import Player from "./components/player/Player";
 import './Battle.scss'
+import TableView from "./components/table-view/TableView";
 
 const Battle = () => {
     const dispatch = useDispatch()
@@ -27,6 +28,7 @@ const Battle = () => {
     return (
         <div className={'battle'}>
             <Player name={'Player'} health={80} img={data && data[0].url}/>
+            <TableView/>
             <Player name={'Opponent'} health={30} img={data && data[4].url} isOnRightSide={true}/>
         </div>
     );
