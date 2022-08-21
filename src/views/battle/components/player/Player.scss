@@ -1,0 +1,34 @@
+.player {
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+  padding: 10px;
+
+  .health {
+    width: 100%;
+    height: 20px;
+    border: 1px solid black;
+
+    &__current {
+      background-color: green;
+      height: inherit;
+    }
+  }
+
+
+  .img-container{
+    width: 100%;
+    position: relative;
+    height: 50px;
+    img{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.player.reverse {
+  direction: rtl;
+}
