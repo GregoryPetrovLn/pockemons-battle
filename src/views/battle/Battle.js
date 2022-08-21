@@ -11,7 +11,7 @@ import ShowWinner from "./components/show-winner/ShowWinner";
 import History from "./components/history/History";
 
 const Pockemon = {
-    health: 10,
+    health: 100,
     history: [],
     image: '',
     name: ''
@@ -42,16 +42,25 @@ const Battle = () => {
     const startNewGame = (isChanged = true) => {
         setIsNewGame(false)
         setLastMove({you: 0, opponent: 0})
-        setPlayer(isChanged ? JSON.parse(JSON.stringify({...Pockemon, name: 'Player'})) : {...player, health: 10})
+        setPlayer(isChanged ? JSON.parse(JSON.stringify({...Pockemon, name: 'Player'})) : {...player, health: 100})
         setOpponent(JSON.parse(JSON.stringify({...Pockemon, name: 'Opponent'})))
     }
 
     const getAttackResults = () => {
-        const you = getRandomInt()
-        const opp = getRandomInt()
+        let you = getRandomInt()
+        let opp = getRandomInt()
+        if (you === 6) {
+            alert(`You should throw extra time`)
+            you += getRandomInt()
+        }
+
+        if (opp === 6) {
+            alert(`Opponent should throw extra time`)
+            opp += getRandomInt()
+        }
         setLastMove({you, opponent: opp})
-        const playerHealthAfterHit = player.health - you
-        const opponentHealthAfterHit = opponent.health - opp
+        const playerHealthAfterHit = player.health - opp
+        const opponentHealthAfterHit = opponent.health - you
         return {playerHealthAfterHit, opponentHealthAfterHit, you, opp}
     }
 
@@ -69,8 +78,8 @@ const Battle = () => {
             setPlayer({...player, history: [...player.history, 'Win']})
             setWinner(player)
         } else {
-            setPlayer({...player, health: player.health - you})
-            setOpponent({...opponent, health: opponent.health - opp})
+            setPlayer({...player, health: player.health - opp})
+            setOpponent({...opponent, health: opponent.health - you})
         }
     }
 
