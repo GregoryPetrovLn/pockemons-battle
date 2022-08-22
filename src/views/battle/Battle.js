@@ -17,8 +17,6 @@ const Pockemon = {
     name: ''
 }
 const Battle = () => {
-    const dispatch = useDispatch()
-    const {data, isLoading} = useSelector(state => state.battle)
     const [player, setPlayer] = useState(null)
     const [opponent, setOpponent] = useState(null)
     const [isNewGame, setIsNewGame] = useState(true)
@@ -93,10 +91,6 @@ const Battle = () => {
         setWinner(null)
     }
 
-
-    if (isLoading) {
-        return <span>Loading...</span>
-    }
 
     if (isNewGame) {
         return <NewGameView startNewGame={startNewGame}/>
