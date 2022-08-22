@@ -1,7 +1,6 @@
 import React from 'react';
 import './Player.scss'
 import classNames from "classnames";
-import pika from '../../../../images/pika.png'
 
 const Player = ({player, isOnRightSide}) => {
     return player && (
@@ -12,7 +11,7 @@ const Player = ({player, isOnRightSide}) => {
                 <div style={{direction: isOnRightSide ? 'ltr' : 'rtl'}}>{`${player?.health}/100`}</div>
             </div>
             <div className={'img-container'}>
-                <img src={pika} alt={'#'}/>
+                <img src={player?.image} alt={'#'}/>
             </div>
         </div>
     );

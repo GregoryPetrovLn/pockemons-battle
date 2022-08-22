@@ -1,5 +1,6 @@
-import {GET_LIST_POCKEMONS} from "./actionTypes";
+import {GET_LIST_POCKEMONS, GET_RANDOM_POCKEMON} from "./actionTypes";
 import axios from "axios";
+import {getRandomInt} from "../../../utils/service";
 
 export const getListPockemons = (limit = 10) => {
     return async (dispatch) => {

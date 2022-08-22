@@ -9,6 +9,8 @@ import NewGameView from "./components/new-game/NewGameView";
 import {getRandomInt} from "../../utils/service";
 import ShowWinner from "./components/show-winner/ShowWinner";
 import History from "./components/history/History";
+import {GET_RANDOM_POCKEMON} from "./redux/actionTypes";
+import axios from "axios";
 
 const Pockemon = {
     health: 100,
@@ -35,15 +37,28 @@ const Battle = () => {
         //==============================
         //==============================
         //==============================
-        dispatch(getListPockemons())
+        //  dispatch(getListPockemons())
     }, [])
 
+    const getRandomPockemonsImages = async () => {
+        let id = getRandomInt(0, 500)
+        const randomPockemonPlayer = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        const urlPlayer = randomPockemonPlayer.data.sprites.other.dream_world.front_default
+        id = getRandomInt(0, 500)
+        const randomPockemonOpponent = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        const urlOpponent = randomPockemonOpponent.data.sprites.other.dream_world.front_default
+        return {urlPlayer, urlOpponent}
+    }
 
-    const startNewGame = (isChanged = true) => {
+    const startNewGame = async (isChanged = true) => {
+        const {urlPlayer, urlOpponent} = await getRandomPockemonsImages()
         setIsNewGame(false)
         setLastMove({you: 0, opponent: 0})
-        setPlayer(isChanged ? JSON.parse(JSON.stringify({...Pockemon, name: 'Player'})) : {...player, health: 100})
-        setOpponent(JSON.parse(JSON.stringify({...Pockemon, name: 'Opponent'})))
+        setPlayer(isChanged ? JSON.parse(JSON.stringify({...Pockemon, name: 'Player', image: urlPlayer})) : {
+            ...player,
+            health: 100
+        })
+        setOpponent(JSON.parse(JSON.stringify({...Pockemon, name: 'Opponent', image: urlOpponent})))
     }
 
     const getAttackResults = () => {

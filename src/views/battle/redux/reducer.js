@@ -15,6 +15,7 @@ export const reducer = (state = initialState, {type, payload}) => {
             return {...state, isLoading: false, data: payload}
         case GET_LIST_POCKEMONS.ERROR:
             return {...state, isLoading: false, data: null}
+
         default:
             return state
     }
