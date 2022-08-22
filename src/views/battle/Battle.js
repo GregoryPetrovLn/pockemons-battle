@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
 import './Battle.scss'
-import {useDispatch, useSelector} from "react-redux";
 import Player from "./components/player/Player";
 import './Battle.scss'
 import TableView from "./components/table-view/TableView";
